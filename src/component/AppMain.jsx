@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 
 
-function Main() {
+function AppMain() {
 
 
     const [listObject, setListObject] = useState([
@@ -18,7 +18,7 @@ function Main() {
     ]);
 
     const [object, setObject] = useState('')
-    const [clicked, SetClicked] = useState(null)
+
 
     const addObject = e => {
         e.preventDefault()
@@ -31,7 +31,6 @@ function Main() {
     function deleteItem(i) {
         console.log('HAI ELIMINATO L elemento ')
         const reloadList = listObject.filter((_, index) => index !== i);
-
         setListObject(reloadList)
     }
 
@@ -39,6 +38,7 @@ function Main() {
         console.log('cambiato L elemento ')
         const reloadList = []
         const cangeobject = prompt('inserisci il valore da cambiare ')
+        if (cangeobject === '') return
         listObject.forEach((ele, ind) => {
             ind === i ? reloadList.push(cangeobject) : reloadList.push(ele)
 
@@ -61,10 +61,11 @@ function Main() {
             <div className='container'>
                 <ul>
                     {listObject.map((item, i) => (
-                        <div className='flex'><li key={i}>{item} </li>
+                        <div key={i} className='flex'>
+                            <li>{item} </li>
                             <div>
-                                <button onClick={() => deleteItem(i)}><i class="fa-solid fa-trash"></i></button>
-                                <button onClick={() => changeItem(i)}><i class="fa-solid fa-pen"></i> </button>
+                                <button onClick={() => deleteItem(i)}><i className="fa-solid fa-trash"></i></button>
+                                <button onClick={() => changeItem(i)}><i className="fa-solid fa-pen"></i> </button>
                             </div>
 
                         </div>
@@ -86,4 +87,4 @@ function Main() {
     )
 }
 
-export default Main
+export default AppMain

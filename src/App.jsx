@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Main from './component/main'
+import AppMain from './component/AppMain'
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      <Main></Main>
+      <AppMain />
     </>
   )
 }
