@@ -41,14 +41,15 @@ function Main() {
 
 
     return (
-        <> <h1>lista degli ogetti </h1>
-            <ul>
-                {listObject.map((item, i) => (
-                    <li key={i}>{item} <button onClick={() => deleteItem(i)}><i class="fa-solid fa-trash"></i></button></li>
-                ))}
+        <> <h1>lista degli oggetti </h1>
+            <div className='container'>
+                <ul>
+                    {listObject.map((item, i) => (
+                        <div className='flex'><li key={i}>{item} </li> <button onClick={() => deleteItem(i)}><i class="fa-solid fa-trash"></i></button></div>
+                    ))}
 
-            </ul>
-
+                </ul>
+            </div>
             <form onSubmit={addObject}>
                 <input type="text" onChange={e => setObject(e.target.value)} />
 
