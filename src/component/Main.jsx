@@ -6,7 +6,7 @@ import { useState } from 'react'
 function Main() {
 
 
-    const listObject = [
+    const [listObject, setListObject] = useState([
         "Chiave Inglese",
         "Cacciavite a Stella",
         "Cacciavite Piatto",
@@ -15,20 +15,35 @@ function Main() {
         "Set di Chiavi Fisse",
         "Chiave a Cricchetto",
         "Bussole"
-    ];
-    const [count, setCount] = useState(0)
+    ]);
+
+    const [object, setObject] = useState('')
+
+    const addObject = e => {
+        e.preventDefault()
+        const reloadList = [...listObject, object]
+        setListObject(reloadList)
+    }
+
+
+
 
     return (
         <> <h1>lista degli ogetti </h1>
             <ul>
-                {listObject.map(item => (
-                    <li>{item}</li>
+                {listObject.map((item, i) => (
+                    <li key={i}>{item}</li>
 
 
                 ))}
 
             </ul>
+            <form onSubmit={addObject}>
+                <input type="text" onChange={e => setObject(e.target.value)} />
 
+                <button> invia</button>
+
+            </form>
 
 
 
