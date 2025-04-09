@@ -18,12 +18,24 @@ function Main() {
     ]);
 
     const [object, setObject] = useState('')
+    const [clicked, SetClicked] = useState(null)
 
     const addObject = e => {
         e.preventDefault()
         const reloadList = [...listObject, object]
         setListObject(reloadList)
+
     }
+
+
+    function deleteItem(i) {
+        console.log('HAI ELIMINATO L elemento ')
+        const reloadList = listObject.filter((_, index) => index !== i);
+
+        setListObject(reloadList)
+    }
+
+
 
 
 
@@ -32,12 +44,11 @@ function Main() {
         <> <h1>lista degli ogetti </h1>
             <ul>
                 {listObject.map((item, i) => (
-                    <li key={i}>{item}</li>
-
-
+                    <li key={i}>{item} <button onClick={() => deleteItem(i)}><i class="fa-solid fa-trash"></i></button></li>
                 ))}
 
             </ul>
+
             <form onSubmit={addObject}>
                 <input type="text" onChange={e => setObject(e.target.value)} />
 
