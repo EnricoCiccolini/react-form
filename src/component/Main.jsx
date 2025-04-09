@@ -35,6 +35,22 @@ function Main() {
         setListObject(reloadList)
     }
 
+    function changeItem(i) {
+        console.log('cambiato L elemento ')
+        const reloadList = []
+        const cangeobject = prompt('inserisci il valore da cambiare ')
+        listObject.forEach((ele, ind) => {
+            ind === i ? reloadList.push(cangeobject) : reloadList.push(ele)
+
+            setListObject(reloadList)
+        });
+
+
+
+
+        setListObject(reloadList)
+    }
+
 
 
 
@@ -45,7 +61,13 @@ function Main() {
             <div className='container'>
                 <ul>
                     {listObject.map((item, i) => (
-                        <div className='flex'><li key={i}>{item} </li> <button onClick={() => deleteItem(i)}><i class="fa-solid fa-trash"></i></button></div>
+                        <div className='flex'><li key={i}>{item} </li>
+                            <div>
+                                <button onClick={() => deleteItem(i)}><i class="fa-solid fa-trash"></i></button>
+                                <button onClick={() => changeItem(i)}><i class="fa-solid fa-pen"></i> </button>
+                            </div>
+
+                        </div>
                     ))}
 
                 </ul>
