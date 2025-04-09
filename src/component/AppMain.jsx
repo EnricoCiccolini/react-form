@@ -3,6 +3,7 @@ import { useState } from 'react'
 
 
 
+
 function AppMain() {
 
 
@@ -22,8 +23,11 @@ function AppMain() {
 
     const addObject = e => {
         e.preventDefault()
+        if (object === '') return
         const reloadList = [...listObject, object]
         setListObject(reloadList)
+        setObject('')
+
 
     }
 
@@ -39,11 +43,12 @@ function AppMain() {
         const reloadList = []
         const cangeobject = prompt('inserisci il valore da cambiare ')
         if (cangeobject === '') return
-        listObject.forEach((ele, ind) => {
-            ind === i ? reloadList.push(cangeobject) : reloadList.push(ele)
 
-            setListObject(reloadList)
-        });
+
+
+        listObject.map((ele, ind) => (
+            ind === i ? reloadList.push(cangeobject) : reloadList.push(ele)
+        ))
 
 
 
@@ -73,8 +78,9 @@ function AppMain() {
 
                 </ul>
             </div>
+
             <form onSubmit={addObject}>
-                <input type="text" onChange={e => setObject(e.target.value)} />
+                <input type="text" value={object} onChange={e => setObject(e.target.value)} />
 
                 <button> invia</button>
 
